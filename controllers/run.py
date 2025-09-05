@@ -13,7 +13,6 @@ def run():
             match option:
                 case "1":
                     login()
-
                 case "2":
                     register()
                 case "3":

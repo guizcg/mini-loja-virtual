@@ -8,7 +8,8 @@ def main_menu():
 |2 - Registrar novo usuário                     |
 |3 - Sair                                       |
 [===============================================]"""
-    ) 
+    )
+
 
 def menu2(items):
     print("[--------------- MINI LOJA VIRTUAL ---------------]")
@@ -20,3 +21,14 @@ def menu2(items):
         for item, value in product.items():
             print(f"| {item.capitalize():<25} - R${value:.2f}")
     print("[=================================================]")
+
+
+def menu3():
+    print(
+        """
+[=================================================]
+|1 - Concluir a compra                            |
+|2 - Remover item do carrinho                     |
+|3 - Voltar                                       |
+[=================================================]"""
+    )

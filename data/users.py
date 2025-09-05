@@ -2,8 +2,12 @@ import sqlite3
 
 
 def data():
-    connection = sqlite3.connect("data/users.db")
-    cursor = connection.cursor()
+    try:
+        connection = sqlite3.connect("data/users.db")
+        cursor = connection.cursor()
+    except Exception:
+        print("| R: Erro ao tentar se conectar com o banco de dados.")
+        return
     try:
         cursor.execute(
             """
@@ -16,7 +20,6 @@ def data():
         )
     """
         )
-
         connection.commit()
         connection.close()
     except Exception:

@@ -38,7 +38,7 @@ def login():
             else:
                 return
     except Exception:
-        print("| R: Houve um erro. Verifique suas informações!")
+        print("| R: Houve um erro ao logar a conta.")
 
 
 def register():
@@ -55,6 +55,7 @@ def register():
                 (user_name, password),
             )
             connection.commit()
+            clear()
             print("| R: Cadastro concluido com sucesso.")
     except Exception:
-        print("| R: Houve um erro. Verifique suas informações!")
+        print("| R: Houve um erro. Verifique suas informações de registro!")
