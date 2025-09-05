@@ -7,7 +7,7 @@ def run():
     clear()
     while True:
         main_menu()
-        option = input("> Opção: ")
+        option = input("| > Opção: ")
         try:
             verify_option(option)
             match option:
@@ -21,7 +21,7 @@ def run():
                     break
                 case _:
                     clear()
-                    print("R: Opcão Inválida.")
+                    print("| R: Opcão Inválida.")
         except Exception as e:
             clear()
-            print("R: Erro Desconhecido.")
+            print("| R: Erro Desconhecido.")

@@ -2,9 +2,9 @@ import sqlite3
 from .store import *
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-db_path = os.path.join(BASE_DIR, "data", "users.db")
+db_path = os.path.join(base_dir, "data", "users.db")
 
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
@@ -28,17 +28,17 @@ def login():
                 clear()
                 store(user_name)
             else:
-                print("R: Senha incorreta.")
+                print("| R: Senha incorreta.")
         else:
             res = input(
-                "R: Esse usuário não existe, deseja se cadastrar? [S/N]: "
+                "| R: Esse usuário não existe, deseja se cadastrar? [S/N]: "
             ).lower()
             if res == "s" or res == "sim" or res == "ss":
                 register()
             else:
                 return
     except Exception:
-        print("R: Houve um erro. Verifique suas informações!")
+        print("| R: Houve um erro. Verifique suas informações!")
 
 
 def register():
@@ -47,7 +47,7 @@ def register():
         cursor.execute("SELECT user_name FROM users WHERE user_name = ?", (user_name,))
         verify_user = cursor.fetchone()
         if verify_user:
-            print("R: Esse usuário já está registrado.")
+            print("| R: Esse usuário já está registrado.")
         else:
             password = input("| > Senha: ")
             cursor.execute(
@@ -55,6 +55,6 @@ def register():
                 (user_name, password),
             )
             connection.commit()
-            print("R: Cadastro concluido com sucesso.")
+            print("| R: Cadastro concluido com sucesso.")
     except Exception:
-        print("R: Houve um erro. Verifique suas informações!")
+        print("| R: Houve um erro. Verifique suas informações!")
