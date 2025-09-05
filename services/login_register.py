@@ -1,14 +1,18 @@
 import sqlite3
 from .store import *
+import os
 
-path = "data/users.db"
-connection = sqlite3.connect(path)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+db_path = os.path.join(BASE_DIR, "data", "users.db")
+
+connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
 
 def login():
     try:
-        user_name = input("> Nome de Usuário: ")
+        user_name = input("| > Nome de Usuário: ")
         cursor.execute(
             "SELECT id, user_name FROM users WHERE user_name = ?", (user_name,)
         )
@@ -19,9 +23,9 @@ def login():
                 "SELECT password FROM users WHERE user_name = ?", (user_name,)
             )
             user_password = cursor.fetchone()
-            password = input("> Senha: ")
+            password = input("| > Senha: ")
             if password in user_password:
-                print("R: Sucesso no Login.")
+                clear()
                 store(user_name)
             else:
                 print("R: Senha incorreta.")
@@ -39,13 +43,13 @@ def login():
 
 def register():
     try:
-        user_name = input("> Nome de usuário: ")
+        user_name = input("| > Nome de usuário: ")
         cursor.execute("SELECT user_name FROM users WHERE user_name = ?", (user_name,))
         verify_user = cursor.fetchone()
         if verify_user:
             print("R: Esse usuário já está registrado.")
         else:
-            password = input("> Senha: ")
+            password = input("| > Senha: ")
             cursor.execute(
                 "INSERT INTO users(user_name, password) VALUES (?,?)",
                 (user_name, password),

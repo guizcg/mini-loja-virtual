@@ -17,6 +17,7 @@ def run():
                 case "2":
                     register()
                 case "3":
+                    clear()
                     break
                 case _:
                     clear()

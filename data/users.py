@@ -11,8 +11,8 @@ def data():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_name TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL,
-            products TEXT,
-            total_value INTEGER DEFAULT 0
+            purchased_items TEXT,
+            spent_value INTEGER DEFAULT 0
         )
     """
         )
